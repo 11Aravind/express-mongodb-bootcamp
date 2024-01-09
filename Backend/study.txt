@@ -1,0 +1,26 @@
+npm install mongodb first install
+// JK6JJzd4lgT6awpY ->password
+// aravindas247 ->username
+mongodb+srv://aravindas247:<password>@cluster0.21ylyi6.mongodb.net/?retryWrites=true&w=majority ->connect mongodb atles
+1) impoert monggose first
+2)  mongoose.connect() ->used to connect  
+3) php il class vech object create cheytha pole models undakkunnu 
+    a) create model folder
+    b) create a model or collection 
+    c)impoert mongoose
+    d)mongoose.Schema ->used to build schema
+        const collection/schema name=new mongoose.Schema
+       ( 
+        name:{
+            type:String,
+            required:true
+            minlength:6
+        }
+        email:{
+            type:String,
+            required:true,
+            unique:true
+        }
+       )
+    e)export connection as export default mongoose.model("model name", schema variable(in step d))
+    //model name capital ane standated
