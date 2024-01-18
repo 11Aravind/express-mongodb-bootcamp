@@ -5,6 +5,7 @@ import router from "./routes/user_routes.js";
 
 
 const app=express();
+app.use(express.json())
 app.use(router); 
 //app.use("/api/user",router)
 
