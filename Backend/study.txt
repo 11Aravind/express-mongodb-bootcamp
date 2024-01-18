@@ -24,3 +24,11 @@ mongodb+srv://aravindas247:<password>@cluster0.21ylyi6.mongodb.net/?retryWrites=
        )
     e)export connection as export default mongoose.model("model name", schema variable(in step d))
     //model name capital ane standated
+
+    modelname.find() ->select * from ...
+
+mongoose.model() ->define a schema,create a model
+                    In summary, mongoose.model() is used to compile a schema into a model, allowing you to 
+                    interact with MongoDB collections in a structured and consistent way.
+
+.save() ->  save a new record to the db

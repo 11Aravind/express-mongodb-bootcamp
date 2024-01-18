@@ -1,11 +1,15 @@
 // const express=require('express');
 import express from "express"
 import mongoose from "mongoose"
-const app=express();
-const PORT=5000;
-// app.get('/',(req,res)=>{
-// res.send('Home Page')
-// })
+import router from "./routes/user_routes.js";
 
-mongoose.connect("mongodb+srv://aravindas247:JK6JJzd4lgT6awpY@cluster0.21ylyi6.mongodb.net/?retryWrites=true&w=majority").then(console.log("db connection was success"))
-app.listen(PORT);
+
+const app=express();
+app.use(router); 
+//app.use("/api/user",router)
+
+mongoose.connect("mongodb+srv://aravindas247:JK6JJzd4lgT6awpY@cluster0.21ylyi6.mongodb.net/?retryWrites=true&w=majority")
+.then(()=>app.listen(5000))
+.then(()=>console.log("db connection was success"))
+.catch((err)=>console.log(err));
+

@@ -1,8 +1,8 @@
 //define a collection or table
 import mongoose from "mongoose";
 
-const userCollection=mongoose.Schema();
-const userSchema=new userCollection({
+const Schema = mongoose.Schema;
+const userSchema=new Schema({
     name:{
         type:String,
         require:true
@@ -13,8 +13,9 @@ const userSchema=new userCollection({
         unique:true
     },
     password:{
-        type:true,
-        minlength:6
+        type:String,
+        minlength:6,
+        required:true
     }
 });
 export default mongoose.model("User",userSchema);
