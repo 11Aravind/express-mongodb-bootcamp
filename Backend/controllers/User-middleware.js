@@ -17,21 +17,22 @@ export const getUserDetails = async (req, res, next) => {
 
 export const signupMiddleware = async (req, res, next) => {
     const { name, email, password } = req.body;
+    let existingEmail;
+    try {
+        existingEmail = await User.findOne({ email })
+    } catch (error) {
+        console.log(error);
+    }
+    if (existingEmail)
+        return res.status(400).json({ message: "user already exist" })
+
     const hashedPassword = bcrypt.hashSync(password)
+
     const user = new User({
         name,
         email,
         password: hashedPassword
     });
-    let existingEmail;
-    try{
-        existingEmail=User.findOne({email})
-        if(existingEmail)
-            return res.status(200).json({message:"The E-mail was exist"})
-    }catch(error)
-    {
-        console.log(error);
-    }
 
     try {
         await user.save();
@@ -40,7 +41,7 @@ export const signupMiddleware = async (req, res, next) => {
     }
     return res.status(201).json({ user })
 }
-export const loginMiddleware=async(req,res,next)=>{
+export const loginMiddleware = async (req, res, next) => {
 
 
 }
