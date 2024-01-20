@@ -32,3 +32,6 @@ mongoose.model() ->define a schema,create a model
                     interact with MongoDB collections in a structured and consistent way.
 
 .save() ->  save a new record to the db
+bcryptjs    =>to hash the password library
+1)npm i bcryptjs
+modelName.find()->data edukkan ite mongoose provide cheyyunne ane ,it return an array/object
