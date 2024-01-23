@@ -2,12 +2,17 @@ import mongoose from "mongoose";
 import Product from "./Models/Product";
 export const getProductDetails=async(req,res,next)=>{
   return(
+    let productDetails;
     try{
-    const productDetails=Product.find();
+     productDetails=Product.find();
     }
     catch(error){
     return console.log(error);
     }
+      if(!productDetails)
+      {
+        res.status(404).json({productDetails})
+      }
   );
 }
 export const saveProduct=async(req,res,next)=>{
