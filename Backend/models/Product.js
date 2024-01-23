@@ -35,4 +35,4 @@ oldPrice:{
   }
   
 })
-export default  mongoose.model("Blog",blogSchema); //blog collection schema create akkunnu
+export default  mongoose.model("Product", productSchema); 
