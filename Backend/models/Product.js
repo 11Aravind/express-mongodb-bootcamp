@@ -35,4 +35,8 @@ oldPrice:{
   }
   
 })
+<<<<<<< HEAD
 export default  mongoose.model("Product", productSchema); 
+=======
+export default  mongoose.model("Product", productSchema); 
+>>>>>>> ab180b4 (some module was added)
