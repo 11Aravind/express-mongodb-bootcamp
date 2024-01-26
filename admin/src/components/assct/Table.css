@@ -1,0 +1,32 @@
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 48px;
+    padding: 0px 19px;
+    border-radius: 5px;
+    border-bottom: 1px solid #dfdede;
+}
+.btn-primary{
+    border: none;
+    color: white;
+    background: #5e5ee7;
+    padding: 7px 8px;
+    border-radius: 5px;
+}
+.table-container{
+    width: 100%;
+    background: white;
+}
+tr{
+    height: 40px;
+    font-weight: 200;
+}
+td {
+    padding: 0px 20px;
+    border-bottom: 1px solid #dfdede;
+}
+.table-headding{
+    font-weight: 600;
+}
