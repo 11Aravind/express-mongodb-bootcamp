@@ -1,0 +1,30 @@
+.card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    flex-direction: column;
+    border: 1px solid gray;
+    /* padding: 40px; */
+}
+.product-image img{
+    width: 100%;
+}
+/* .product-cards{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+} */
+.product-name{
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.oldPrice{
+    text-decoration-line: line-through;
+}

@@ -1,13 +1,11 @@
-// import Table from "./components/Table"
-import Navbar from "./components/Navbar"
-const App=()=> {
+ import AllRouter from "./AllRoutes";
+ import Navbar from"./component/Navbar";
+ const App=()=> {
   return (
-  <div className="nav-container">
+ <>
   <Navbar/>
-  {/* <Table/> */}
-  </div>
-
+  <AllRouter/>
+ </>
   );
 }
-
 export default App;
