@@ -17,6 +17,7 @@ const Card=()=>{
                 <small>150 gm
 1.8 kg
 10 kg</small>
+<button className="btn-cart">Add to Cart</button>
             </div>
         </div>
     );

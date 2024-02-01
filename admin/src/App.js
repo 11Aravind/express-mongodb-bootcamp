@@ -1,11 +1,17 @@
- import AllRouter from "./AllRoutes";
- import Navbar from"./component/Navbar";
- const App=()=> {
+
+import Navbar from "./components/Navbar";
+import {AllRoutes} from "./AllRoutes.js";
+
+
+const App=()=> {
   return (
- <>
+  <div className="nav-container">
   <Navbar/>
-  <AllRouter/>
- </>
+  {/* <Table/> */}
+  <AllRoutes/>
+  </div>
+
   );
 }
+
 export default App;

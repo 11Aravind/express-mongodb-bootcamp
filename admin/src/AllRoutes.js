@@ -1,57 +1,42 @@
-import Home from "./pages/Home";
-import Pets from "./pages/Pets";
-import Foods from "./pages/Foods";
-import Accessorys from "./pages/Accessorys";
-import {Login} from "./pages/Login";
-import {Signup} from "./pages/Signup";
-import { Routes, Route } from "react-router-dom";
-import Notfound from "./pages/Notfound";
+import Home from "./pages/Home"
+import Product from "./pages/Product.js"
+import AddProduct from "./pages/AddProduct.js"
+import Order from "./pages/Order.js"
+import {  Route, Routes } from 'react-router-dom';
 const routerInfo = [
     {
-        path: "/",
-        component: <Home />,
+        path:"/",
+        component:<Home />
     },
     {
-        path: "/pets",
-        component: <Pets />
+        path:"/productdetails",
+        component:<Product />
     },
     {
-        path: "/foods",
-        component: <Foods />
+        path:"/addproduct",
+        component:<AddProduct />
     },
     {
-        path: "/accessorys",
-        component: <Accessorys />
+        path:"/orderdetails",
+        component:<Order />
     },
-    {
-        path: "/login",
-        component: <Login />
-    },
-    {
-        path: "/signup",
-        component: <Signup />
-    },
-    {
-        path: "*",
-        component: <Notfound />
-    }
 ];
-const AllRouter = () => {
-    return (
+export const AllRoutes=()=>{
+    return(
         <Routes>
             {
-                routerInfo.map((eachRoute, id) => {
-                    return (
-                        <Route
-                            key={id}
-                            path={eachRoute.path}
-                            element={eachRoute.component}
+                routerInfo.map((eachRoute,id)=>{
+                    return(
+                        <Route 
+                        key={id}
+                        path={eachRoute.path}
+                        element={eachRoute.component}
                         />
                     );
                 })
-            }
 
+            }
         </Routes>
     );
 }
-export default AllRouter;
+// export default AllRoutes;

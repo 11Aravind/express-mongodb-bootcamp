@@ -1,3 +1,4 @@
+import Card from "../component/Card";
 const Pets=()=>{
     const petsDetails=[
         {
@@ -23,7 +24,19 @@ const Pets=()=>{
         },
     ]
     return(
-        <div className="topSpacing">Pets pages</div>
+        <div className="topSpacing">
+            Pets page
+           <div className="product-cards">
+           <Card />
+           <Card />
+           <Card />
+           <Card />
+           <Card />
+           <Card />
+           <Card />
+            </div> 
+            
+        </div>
     );
 }
 export default Pets;
