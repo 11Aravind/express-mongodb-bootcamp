@@ -4,7 +4,8 @@ const GallerySchema=new Schema(
     {
         image:{
             type:String,
-            required:true
+            data:Buffer,
+            required:true,
         }
     }
 )
