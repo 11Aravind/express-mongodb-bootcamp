@@ -13,9 +13,5 @@ const blogSchema=new Schema({
         type:String,
         required:true
     },
-    user_id:{
-        type:String,
-        required:true
-    }
 })
 export default  mongoose.model("Blog",blogSchema); //blog collection schema create akkunnu

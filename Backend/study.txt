@@ -36,3 +36,5 @@ bcryptjs    =>to hash the password library
 1)npm i bcryptjs
 modelName.find()->data edukkan ite mongoose provide cheyyunne ane ,it return an array/object
 take value from url->req.param.varName
+
+Multer -> is a middleware for multipart/formdata
