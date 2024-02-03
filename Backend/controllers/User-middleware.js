@@ -24,7 +24,7 @@ export const signupMiddleware = async (req, res, next) => {
         console.log(error);
     }
     if (existingEmail)
-        return res.status(400).json({ message: "user already exist" })
+        return res.status(400).json({ message: "user already exist",status:"failed" })
 
     const hashedPassword = bcrypt.hashSync(password)
 
@@ -39,7 +39,7 @@ export const signupMiddleware = async (req, res, next) => {
     } catch (err) {
         return console.log(err);
     }
-    return res.status(201).json({ user })
+    return res.status(201).json({ message:"successsfuly stored",status:"success" })
 }
 
 
@@ -52,9 +52,9 @@ export const loginMiddleware = async (req, res, next) => {
     }
     catch (error) { return console.log(error); }
     if (!existingUser)
-        return res.status(404).json({ message: "coudnt find user e-mail" })
+        return res.status(404).json({ message: "coudn't find user e-mail" ,status:"failed"})
     const isPasswordCorrect=bcrypt.compareSync(password,existingUser.password)
     if(!isPasswordCorrect)
-        return res.status(404).json({message:"password was wrong "})
-    return res.status(200).json({message:"Login was successful"})
+        return res.status(404).json({message:"password was wrong " ,status:"failed"})
+    return res.status(200).json({message:"Login was successful",status:"success"})
 }
