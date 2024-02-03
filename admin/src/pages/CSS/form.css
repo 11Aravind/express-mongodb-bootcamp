@@ -1,0 +1,19 @@
+.form-controler{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 4px;
+}
+.inputBox{
+    outline: none;
+    outline: none;
+    padding: 7px 13px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+}

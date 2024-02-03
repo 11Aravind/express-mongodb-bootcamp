@@ -17,8 +17,20 @@ const Navbar = () => {
                     url: "/productdetails"
                 },
                 {
+                    menu: 'Caretaker',
+                    url: "/caretaking"
+                },
+                {
                     menu: 'Order',
                     url: "/orderdetails"
+                },
+                {
+                    menu: 'Blog',
+                    url: "/blog"
+                },
+                {
+                    menu: 'Gallery',
+                    url: "/gallery"
                 },
             ],
         },
