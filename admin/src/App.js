@@ -1,6 +1,6 @@
 
 import Navbar from "./components/Navbar";
-import {AllRoutes} from "./AllRoutes.js";
+import {AllRoutes} from "./AllRoutes";
 
 
 const App=()=> {

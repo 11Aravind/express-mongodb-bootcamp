@@ -1,7 +1,7 @@
 import Home from "./pages/Home"
-import Product from "./pages/Product.js"
-import AddProduct from "./pages/AddProduct.js"
-import Order from "./pages/Order.js"
+import Product from "./pages/Product.jsx"
+import AddProduct from "./pages/AddProduct.jsx"
+import Order from "./pages/Order.jsx"
 import Blogs from "./pages/Blogs"
 import Addblog from "./pages/Addblog"
 import {  Route, Routes } from 'react-router-dom';

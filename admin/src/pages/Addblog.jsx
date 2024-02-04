@@ -4,12 +4,13 @@ import axios from "axios"
 const Addblog = () => {
     const tittle=useRef("");
     const description=useRef("");
-    const [image,setImage]=useState()
+    const [file,setImage]=useState()
     const upload=()=>{
+        // console.log(file)
         const blogData={
             "tittle":tittle.current.value,
             "description":description.current.value,
-            "image":image
+            "image":file
         }
         axios.post("http://localhost:5000/api/blog/add",blogData)
         .then(res=>{})
@@ -31,7 +32,7 @@ const Addblog = () => {
                     </div>
                     <div className="form-controler">
                         <label htmlFor="">Image</label>
-                        <input type="file" name="image" onChange={(e)=>setImage(e.target.files[0])} className="inputBox" />
+                        <input type="file" name="file" onChange={(e)=>setImage(e.target.files[0])} className="inputBox" />
                     </div>
                 </div>
                 <div className="form-controler">
