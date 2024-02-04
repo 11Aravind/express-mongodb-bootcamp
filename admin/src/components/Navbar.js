@@ -26,7 +26,7 @@ const Navbar = () => {
                 },
                 {
                     menu: 'Blog',
-                    url: "/blog"
+                    url: "/blogs"
                 },
                 {
                     menu: 'Gallery',

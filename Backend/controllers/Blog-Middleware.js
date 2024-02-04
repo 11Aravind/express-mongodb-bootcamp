@@ -13,19 +13,19 @@ export const getAllBlogs = async (req, res, next) => {
 }
 
 export const addBlog = async (req, res, next) => {
-    const { title, description, image, user_id } = req.body;
-    const newBlog = new Blog({
-        title,
-        description,
-        image,
-        user_id
-    });
-    try {
-        await newBlog.save();
-    } catch (error) {
-        return console.log(error);
-    }
-    return res.status(200).json({ message: "New blog was added" })
+    return console.log(req.body);
+    // res.send({message:req.body})
+    // const { tittle, image, description } = req.body;
+    // const newBlog = new Blog({
+    //     tittle,
+    //     description,
+    // });
+    // try {
+    //     await newBlog.save();
+    // } catch (error) {
+    //     return console.log(error);
+    // }
+    // return res.status(200).json({ message: "New blog was added" })
 }
 export const updateBlog = async (req, res, next) => {
     const { title, description } = req.body;

@@ -2,6 +2,8 @@ import Home from "./pages/Home"
 import Product from "./pages/Product.js"
 import AddProduct from "./pages/AddProduct.js"
 import Order from "./pages/Order.js"
+import Blogs from "./pages/Blogs"
+import Addblog from "./pages/Addblog"
 import {  Route, Routes } from 'react-router-dom';
 const routerInfo = [
     {
@@ -19,6 +21,14 @@ const routerInfo = [
     {
         path:"/orderdetails",
         component:<Order />
+    },
+    {
+        path:"/blogs",
+        component:<Blogs />
+    },
+    {
+        path:"/addblog",
+        component:<Addblog />
     },
 ];
 export const AllRoutes=()=>{

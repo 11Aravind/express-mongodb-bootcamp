@@ -17,3 +17,14 @@
     display: flex;
     justify-content: space-between;
 }
+textarea{
+    outline: none;
+}
+.add-blogBtn{
+    float: right;
+    border: none;
+    color: white;
+    background: #5e5ee7;
+    border-radius: 3px;
+    padding: 8px 15px;
+}
