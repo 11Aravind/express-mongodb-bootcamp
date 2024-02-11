@@ -29,7 +29,8 @@ const Table = ({tableCardHeadding,tableHeadding,tableValues}) => {
                             <td>{eachValue.name}</td>
                             <td>{eachValue.age}</td>
                             <td>{eachValue.address}</td>
-                            <td><button className={eachValue.action}> + ADD</button>  </td>
+                            <td><i className="bi bi-pencil-square"></i> </td>
+                            <td>  <i className="bi bi-trash3-fill"></i>  </td>
                         </tr>
                     )
                 }
