@@ -5,9 +5,11 @@ import userRouter from "./routes/user_routes.js";
 import blogRouter from "./routes/blog-routes.js";
 import galleryRouter from "./routes/gallery-routs.js";
 import cors from "cors";
+
 const app=express();
 app.use(express.json())
 app.use(cors())
+app.use('/',express.static('uploads'))
 app.use("/api/user",userRouter); 
 app.use("/api/blog",blogRouter); 
 app.use("/api/gallery",galleryRouter); 

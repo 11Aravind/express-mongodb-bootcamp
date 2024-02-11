@@ -5,13 +5,14 @@ const blogSchema=new Schema({
         type:String,
         required:true
     },
+    image:{
+        type:String,
+        required:false
+    },
     description:{
         type:String,
         required:true
-    },
-    image:{
-        type:String,
-        required:true
-    },
+    }
+    
 })
 export default  mongoose.model("Blog",blogSchema); //blog collection schema create akkunnu

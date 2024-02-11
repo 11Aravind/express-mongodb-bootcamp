@@ -1,17 +1,14 @@
-import multer from "multer"
-
-// Set up storage for uploaded files
+import multer from "multer";
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, '../ASCT/Upload');
+  destination: function (req, image, cb) {
+    cb(null, 'uploads/'); // Destination folder for uploaded images
   },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
+  filename: function (req, image, cb) {
+    cb(null, Date.now() + '-' + image.originalname); // Rename files to avoid conflicts
+  },
 });
 
 // Create the multer instance
 const upload = multer({ storage: storage });
-
 // module.exports = upload;
 export default upload;

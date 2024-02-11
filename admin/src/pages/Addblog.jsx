@@ -1,25 +1,28 @@
 import { useRef, useState } from "react";
+import { httpRequest } from "../API/api.js";
 import "./CSS/form.css"
-import axios from "axios"
 const Addblog = () => {
     const tittle=useRef("");
     const description=useRef("");
     const [file,setImage]=useState()
     const upload=()=>{
-        // console.log(file)
-        const blogData={
-            "tittle":tittle.current.value,
-            "description":description.current.value,
-            "image":file
-        }
-        axios.post("http://localhost:5000/api/blog/add",blogData)
-        .then(res=>{})
-        .catch((err)=>console.log(err))
+        const blogData=new FormData();
+        blogData.append("tittle",tittle.current.value);
+        blogData.append("description",description.current.value);
+        blogData.append("image",file);
+        // axios.post("http://localhost:5000/api/blog/add",blogData)
+        // .then(res=>{})
+        // .catch((err)=>console.log(err))
+        // console.log(blogData);
+        httpRequest(
+            blogData,
+            "api/blog/add"
+          ).then((data)=>console.log(data));
     }
     return (
         <div className="content-div">
             <div className="card-header">
-                <div className="card-headding">Add Product</div>
+                <div className="card-headding">Add Blog</div>
                 <div className="top-button">
                     <button className="btn-primary"> Go</button>
                 </div>
