@@ -7,7 +7,6 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + '-' + image.originalname); // Rename files to avoid conflicts
   },
 });
-
 // Create the multer instance
 const upload = multer({ storage: storage });
 // module.exports = upload;

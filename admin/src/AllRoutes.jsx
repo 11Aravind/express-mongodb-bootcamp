@@ -4,6 +4,7 @@ import AddProduct from "./pages/AddProduct.jsx"
 import Order from "./pages/Order.jsx"
 import Blogs from "./pages/Blogs"
 import Addblog from "./pages/Addblog"
+import Gallery from "./pages/Gallery"
 import {  Route, Routes } from 'react-router-dom';
 const routerInfo = [
     {
@@ -30,6 +31,11 @@ const routerInfo = [
         path:"/addblog",
         component:<Addblog />
     },
+    {
+        path:"/gallery",
+        component:<Gallery />
+    },
+    
 ];
 export const AllRoutes=()=>{
     return(

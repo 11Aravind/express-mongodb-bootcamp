@@ -30,35 +30,7 @@ export const addBlog = async (req, res, next) => {
     }
     return res.status(200).json({ message: "New blog was added" })
 }
-// export const addBlog = (req, res, next) => {
-//     upload(req, res, async function (err) {
-//       if (err instanceof multer.MulterError) {
-//         // A Multer error occurred when uploading.
-//         return res.status(500).json({ error: err.message });
-//       } else if (err) {
-//         // An unknown error occurred when uploading.
-//         return res.status(500).json({ error: 'An error occurred while uploading the image.' });
-//       }
-  
-//       // Image uploaded successfully.
-//       // Now insert other form data into MongoDB using Mongoose.
-   
-//       try {
-//         const { tittle, description } = req.body;
-//         const newBlog = new Blog({
-//             tittle,
-//             description,
-//             image:req.image.path,
-//         });
-  
-//         // Save the new data to MongoDB
-//         await newBlog.save();
-//         res.status(201).json({ message: 'Data saved successfully.' });
-//       } catch (error) {
-//         res.status(500).json({ error: 'An error occurred while saving data to MongoDB.' });
-//       }
-//     });
-//   };
+
 export const updateBlog = async (req, res, next) => {
     const { title, description } = req.body;
     const blogId = req.params.id;

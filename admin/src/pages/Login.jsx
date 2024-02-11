@@ -16,7 +16,7 @@ export const Login = () => {
 
           {/* <div class="formbold-input-flex">
             <div>
-              <label for="firstname" class="formbold-form-label">
+              <label htmlFor="firstname" class="formbold-form-label">
                 First name
               </label>
               <input
@@ -27,7 +27,7 @@ export const Login = () => {
               />
             </div>
             <div>
-              <label for="lastname" class="formbold-form-label"> Last name </label>
+              <label htmlFor="lastname" class="formbold-form-label"> Last name </label>
               <input
                 type="text"
                 name="lastname"
@@ -39,7 +39,7 @@ export const Login = () => {
 
           <div class="formbold-input-flex">
             <div>
-              <label for="email" class="formbold-form-label"> Email </label>
+              <label htmlFor="email" class="formbold-form-label"> Email </label>
               <input
                 type="email"
                 name="email"
@@ -48,7 +48,7 @@ export const Login = () => {
               />
             </div>
             <div>
-              <label for="phone" class="formbold-form-label"> Phone number </label>
+              <label htmlFor="phone" class="formbold-form-label"> Phone number </label>
               <input
                 type="text"
                 name="phone"
@@ -59,7 +59,7 @@ export const Login = () => {
           </div> */}
 
           <div class="formbold-mb-3">
-            {/* <label for="address" class="formbold-form-label">
+            {/* <label htmlFor="address" class="formbold-form-label">
               E-mail
             </label> */}
             <input placeholder="E-mail"
@@ -71,7 +71,7 @@ export const Login = () => {
           </div>
 
           <div class="formbold-mb-3">
-            {/* <label for="address2" class="formbold-form-label">
+            {/* <label htmlFor="address2" class="formbold-form-label">
               Password
             </label> */}
             <input type="password" class="formbold-form-input"   placeholder="Password"/>
@@ -80,7 +80,7 @@ export const Login = () => {
 
           {/* <div class="formbold-input-flex">
             <div>
-              <label for="state" class="formbold-form-label"> State/Prvince </label>
+              <label htmlFor="state" class="formbold-form-label"> State/Prvince </label>
               <input
                 type="text"
                 name="state"
@@ -89,7 +89,7 @@ export const Login = () => {
               />
             </div>
             <div>
-              <label for="country" class="formbold-form-label"> Country </label>
+              <label htmlFor="country" class="formbold-form-label"> Country </label>
               <input
                 type="text"
                 name="country"
@@ -101,7 +101,7 @@ export const Login = () => {
 
           {/* <div class="formbold-input-flex">
             <div>
-              <label for="post" class="formbold-form-label"> Post/Zip code </label>
+              <label htmlFor="post" class="formbold-form-label"> Post/Zip code </label>
               <input
                 type="text"
                 name="post"
@@ -110,7 +110,7 @@ export const Login = () => {
               />
             </div>
             <div>
-              <label for="area" class="formbold-form-label"> Area Code </label>
+              <label htmlFor="area" class="formbold-form-label"> Area Code </label>
               <input
                 type="text"
                 name="area"
@@ -121,7 +121,7 @@ export const Login = () => {
           </div> */}
 
           {/* <div class="formbold-checkbox-wrapper">
-            <label for="supportCheckbox" class="formbold-checkbox-label">
+            <label htmlFor="supportCheckbox" class="formbold-checkbox-label">
               <div class="formbold-relative">
                 <input
                   type="checkbox"
