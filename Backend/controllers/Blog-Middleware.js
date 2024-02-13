@@ -25,7 +25,7 @@ export const addBlog = async (req, res, next) => {
     try {
         await newBlog.save();
     } catch (error) {
-        return res.status(400).json({ message: "not found" })
+        return res.status(400).json({ message: "blog was not added" })
     }
     return res.status(200).json({ message: "New blog was added" })
 }
