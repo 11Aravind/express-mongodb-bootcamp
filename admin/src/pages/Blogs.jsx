@@ -16,6 +16,9 @@ const Blogs=()=>{
         {
             th: "Action"
         },
+        {
+            th: ""
+        },
     ];
     const tableValues = [
         {

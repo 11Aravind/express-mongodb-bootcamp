@@ -15,7 +15,6 @@ export const getAllBlogs = async (req, res, next) => {
 }
 
 export const addBlog = async (req, res, next) => {
-  console.log(req.file);
     const { tittle, description } = req.body;
     const image=req.file.path;
     const newBlog = new Blog({

@@ -45,3 +45,15 @@ td {
     padding: 7px 8px;
     border-radius: 5px;
 }
+.hiden{
+    display: none;
+}
+.bannerImg{
+    width:100px;
+}
+.bannerImg:hover{
+    width: 80%;
+    position: fixed;
+    top: 24%;
+    left: 18%;
+}

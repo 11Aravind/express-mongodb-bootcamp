@@ -4,7 +4,8 @@ import "./CSS/form.css"
 const Addblog = () => {
     const tittle = useRef("");
     const description = useRef("");
-    const [file, setImage] = useState()
+    const [file, setImage] = useState();
+
     const upload = () => {
         const blogData = new FormData();
         blogData.append("tittle", tittle.current.value);
@@ -22,7 +23,10 @@ const Addblog = () => {
     return (
         <div className="content-div">
             <div className="card-header">
-                <div className="card-headding">Add Blog</div>
+                <div className="card-headding">Add Blog
+                
+                </div>
+
                 {/* <div className="top-button">
                     <button className="btn-primary"> Go</button>
                 </div> */}
