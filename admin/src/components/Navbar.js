@@ -13,6 +13,10 @@ const Navbar = () => {
             menu: 'Service',
             subMenu: [
                 {
+                    menu: 'Category',
+                    url: "/category"
+                },
+                {
                     menu: 'Product',
                     url: "/productdetails"
                 },

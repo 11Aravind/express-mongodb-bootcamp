@@ -5,6 +5,7 @@ import Order from "./pages/Order.jsx"
 import Blogs from "./pages/Blogs"
 import Addblog from "./pages/Addblog"
 import Gallery from "./pages/Gallery"
+import {Categorydetails,AddCategory} from "./pages/Categorydetails"
 import {  Route, Routes } from 'react-router-dom';
 const routerInfo = [
     {
@@ -30,6 +31,14 @@ const routerInfo = [
     {
         path:"/addblog",
         component:<Addblog />
+    },
+    {
+        path:"/category",
+        component:<Categorydetails/>
+    },
+    {
+        path:"/addcategory",
+        component:<AddCategory />
     },
     {
         path:"/gallery",
