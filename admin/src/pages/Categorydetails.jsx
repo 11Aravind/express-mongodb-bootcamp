@@ -1,4 +1,6 @@
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import {httpRequest} from "../API/api"
 export const Categorydetails = () => {
     const inlineStyle = {
         left: "0%",
@@ -70,6 +72,20 @@ export const Categorydetails = () => {
 }
 // export default Categorydetails;
 export const AddCategory = () => {
+    const maincategory=useRef('');
+    const category=useRef('');
+    const subcategory=useRef('');
+    const [image,setImage]=useState();
+    const saveCategory=(e)=>{
+        // console.log(maincategory.current.value);
+        const categoryData=new FormData();
+        categoryData.append("mainCategory",maincategory.current.value);
+        categoryData.append("category",category.current.value);
+        categoryData.append("subCategory",subcategory.current.value);
+        categoryData.append("image",image);
+        // console.log(categoryData);
+        httpRequest(categoryData,'api/category/add');
+    }
     return (
         <div className="content-div">
             <div className="card-header">
@@ -81,7 +97,7 @@ export const AddCategory = () => {
                 <div className="row " style={{ padding: "37px" }}>
                     <div className="col">
                         <label htmlFor="maincat">Main Category</label>
-                        <select class="form-select" id="maincat" aria-label="Default select example">
+                        <select class="form-select" id="maincat" ref={maincategory} aria-label="Default select example">
                             <option selected>--Select--</option>
                             <option value="Pet">Pet</option>
                             <option value="Food">Food</option>
@@ -91,22 +107,22 @@ export const AddCategory = () => {
                     </div>
                     <div className="col">
                         <label htmlFor="category">Category</label>
-                        <input type="text"id="category" className="form-control"  />
+                        <input type="text"id="category" ref={category} className="form-control"  />
                     </div>
                 </div>
                     <div className="row" style={{padding: "16px 37px" }}>
                         <div className="col">
                             <label htmlFor="sub_cat">Sub category</label>
-                            <input type="text" className="form-control" id="sub_cat" />
+                            <input type="text" ref={subcategory} className="form-control" id="sub_cat" />
                         </div>
                         <div className="col">
                             <label htmlFor="image">Image</label>
-                            <input type="file" className="form-control" id="image" />
+                            <input type="file" onChange={(e)=>setImage(e.target.files[0])} className="form-control" id="image" />
                         </div>
                     </div>
                     
             <div className="row"  style={{padding: "16px 37px" }}>
-                <button className="btn btn-primary">Save</button>
+                <button className="btn btn-primary" onClick={saveCategory}>Save</button>
             </div>
             </div>
 

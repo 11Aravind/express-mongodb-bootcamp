@@ -1,11 +1,11 @@
-import mongoose, { Schema } from "mongoose"
+import mongoose from "mongoose"
 const Schema=mongoose.Schema;
-const categorySchema=new Schema({
-mainCategory:{ //pet
+const Category=new Schema({
+    mainCategory:{ //pet
     type:String,
     required:true
 },
-Category:{ //dog
+category:{ //dog
     type:String,
     required:true
 },
@@ -18,4 +18,4 @@ image:{
     required:true
 }
 });
-export default mongoose.model("Category",categorySchema);
+export default mongoose.model("Category",Category);

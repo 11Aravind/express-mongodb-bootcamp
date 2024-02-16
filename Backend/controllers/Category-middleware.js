@@ -1,12 +1,12 @@
-import upload from "./multer-middleware";
+import upload from "./multer-middleware.js";
 import multer from "multer";
-import Category from "../models/Category";
+import Category from "../models/Category.js";
 export const saveCategory = async (req, res, next) => {
-    const { mainCategory, Category, subCategory } = req.body;
+    const { mainCategory, category, subCategory } = req.body;
     const image = req.file.path;
     const newCategory = new Category({
         mainCategory,
-        Category,
+        category,
         subCategory,
         image
     })
