@@ -14,8 +14,4 @@ const adminSchema=new Schema({
         required:true
     }
 });
-<<<<<<< HEAD
 export default mongoose.model("Admin",adminSchema);
-=======
-export default mongoose.model("Admin",adminSchema);
->>>>>>> ab180b4 (some module was added)
