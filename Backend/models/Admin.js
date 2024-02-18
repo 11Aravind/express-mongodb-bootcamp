@@ -2,6 +2,8 @@
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
+// "email":"admin@gmail.com",
+//     "password":"sudo@*,"
 const adminSchema=new Schema({
     email:{
         type:String,
