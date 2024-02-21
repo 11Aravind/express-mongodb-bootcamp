@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { httpRequest } from "../API/api";
+import { httpRequest ,httpgetdata} from "../API/api";
 import Table from "../components/Table";
-
-
+import { useEffect } from "react";
 const Gallery = () => {
     // left: 0%;
     // width: 100%;
@@ -65,18 +64,19 @@ export const Gallerylist=()=>{
             th: "Action"
         },
     ];
-    const tableValues = [
-        {
-            id: 10,
-            url: "https://www.petsy.online/cdn/shop/files/Dog-Food-Banner_1351x375.jpg?v=1707374678",
-           
-        },
-        {
-            id: 11,
-            url: "https://www.petsy.online/cdn/shop/files/Dog-_-CatTreats-Banner_1351x375.jpg?v=1707375010",
-           
-        },    
-    ];
+    const[galleryDetails,setGalleryDetails]=useState([]);
+    useEffect(() => {
+        httpgetdata({}, "api/gallery").then((data) => {
+            // Check if the fetched data is an object and has 'categoryDetails' array
+            if (data && Array.isArray(data.galleryList)) {
+                setGalleryDetails(data.galleryList);
+            } else {
+                console.error("Fetched data does not contain 'galleryList' array:", data);
+            }
+        }).catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }, []);
     return(
         <>
         <div className="content-div" style={inlineStyle}> 
@@ -92,9 +92,9 @@ export const Gallerylist=()=>{
                 </thead>
                 <tbody>
                     {
-                        tableValues.map((eachValue, id) =>
+                        galleryDetails.map((eachValue, id) =>
                             <tr key={id} scope="row">
-                                <td>{eachValue.id}</td>
+                                <td>{eachValue._id}</td>
                                 <td><img src={eachValue.url} alt="banner" className="bannerImg"  /></td>
                                 <td>  <i className="bi bi-trash3-fill"></i>  </td>
                                 {/* <td><i className="bi bi-pencil-square"></i> </td> */}

@@ -1,5 +1,12 @@
+import { useEffect, useState } from "react";
+import { httpgetdata } from "../API/api";
 import Table from "../components/Table"
-const Blogs=()=>{
+const Blogs = () => {
+    const inlineStyle = {
+        left: "0%",
+        width: "100%",
+        top: "111%",
+    }
     const tableHeadding = [
         {
             th: "#id"
@@ -11,7 +18,7 @@ const Blogs=()=>{
             th: "Image"
         },
         {
-            th: "Content"
+            th: "Description"
         },
         {
             th: "Action"
@@ -20,32 +27,60 @@ const Blogs=()=>{
             th: ""
         },
     ];
-    const tableValues = [
-        {
-            id: 10,
-            name: "Aravind",
-            age: 19,
-            address: "sreenandanam muthupilakkadu",
-            action: "btn-warning",
-        },
-        {
-            id: 11,
-            name: "Siva",
-            age: 19,
-            address: "Siva bhavan",
-            action: "btn-danger",
-        },    
-    ];
-    const tableCardHeadding=
-        {
-            tableHeadding:"Blog Details",
-            buttonText:" Add",
-            link:"/addblog"
-        };
-    return(
-      <div>
-         <Table tableCardHeadding={tableCardHeadding} tableHeadding={tableHeadding} tableValues={tableValues} />
-      </div>
+    const [blogDetails, setBlogDetails] = useState([]);
+    useEffect(() => {
+        httpgetdata({}, "api/blog").then((data) => {
+            // Check if the fetched data is an object and has 'categoryDetails' array
+            if (data && Array.isArray(data.blogDetails)) {
+                setBlogDetails(data.blogDetails);
+            } else {
+                console.error("Fetched data does not contain 'blogDetails' array:", data);
+            }
+        }).catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }, []);
+    const tableCardHeadding =
+    {
+        tableHeadding: "Blog Details",
+        buttonText: " Add",
+        link: "/addblog"
+    };
+    return (
+        <div className="content-div">
+             <div className="card-header">
+                <div className="card-headding">Blog
+                    {/* <p className="errorMessage">{alertMessage}</p> */}
+                </div>
+            </div>
+            <div className="content-div" style={inlineStyle}>
+                <table className="table-container table">
+                    <thead>
+                        <tr className="table-headding">
+                            {
+                                tableHeadding.map((eachHeadding, id) =>
+                                    <td key={id}>{eachHeadding.th}</td>
+                                )
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            blogDetails.map((eachValue, id) =>
+                                <tr key={id} scope="row">
+                                    <td>{eachValue._id}</td>
+                                    <td>{eachValue.tittle}</td>
+                                    <td><img src={eachValue.image} alt="banner" className="bannerImg" /></td>
+                                    <td>{eachValue.description}</td>
+                                    <td>  <i className="bi bi-trash3-fill"></i>  </td>
+                                    {/* <td><i className="bi bi-pencil-square"></i> </td> */}
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 }
 export default Blogs;

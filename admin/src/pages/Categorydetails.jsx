@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import {httpRequest} from "../API/api"
+import { httpRequest, httpgetdata } from "../API/api"
 export const Categorydetails = () => {
     const inlineStyle = {
         left: "0%",
@@ -8,28 +8,21 @@ export const Categorydetails = () => {
         top: "103%",
     }
     const tableHeadding = [
-        {
-            th: "#id"
-        },
-        {
-            th: "Image"
-        },
-        {
-            th: "Action"
-        },
+        { th: "#id" }, { th: "Main category" }, { th: "Category" }, { th: "subCategory" }, { th: "image" }, { th: "Action" },
     ];
-    const tableValues = [
-        {
-            id: 10,
-            url: "https://www.petsy.online/cdn/shop/files/Dog-Food-Banner_1351x375.jpg?v=1707374678",
-
-        },
-        {
-            id: 11,
-            url: "https://www.petsy.online/cdn/shop/files/Dog-_-CatTreats-Banner_1351x375.jpg?v=1707375010",
-
-        },
-    ];
+    const [categoryDetails, setCategoryDetails] = useState([]);
+    useEffect(() => {
+        httpgetdata({}, "api/category").then((data) => {
+            // Check if the fetched data is an object and has 'categoryDetails' array
+            if (data && Array.isArray(data.categoryDetails)) {
+                setCategoryDetails(data.categoryDetails);
+            } else {
+                console.error("Fetched data does not contain 'categoryDetails' array:", data);
+            }
+        }).catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }, []);
     return (
         <div className="content-div">
             <div className="card-header">
@@ -55,10 +48,13 @@ export const Categorydetails = () => {
                     </thead>
                     <tbody>
                         {
-                            tableValues.map((eachValue, id) =>
+                            categoryDetails.map((eachValue, id) =>
                                 <tr key={id} scope="row">
-                                    <td>{eachValue.id}</td>
-                                    <td><img src={eachValue.url} alt="banner" className="bannerImg" /></td>
+                                    <td>{eachValue._id}</td>
+                                    <td>{eachValue.mainCategory}</td>
+                                    <td>{eachValue.category}</td>
+                                    <td>{eachValue.subCategory}</td>
+                                    <td><img src={eachValue.image} alt="banner" className="bannerImg" /></td>
                                     <td>  <i className="bi bi-trash3-fill"></i>  </td>
                                     {/* <td><i className="bi bi-pencil-square"></i> </td> */}
                                 </tr>
@@ -72,25 +68,32 @@ export const Categorydetails = () => {
 }
 // export default Categorydetails;
 export const AddCategory = () => {
-    const maincategory=useRef('');
-    const category=useRef('');
-    const subcategory=useRef('');
-    const [image,setImage]=useState();
-    const saveCategory=(e)=>{
+    const maincategory = useRef('');
+    const category = useRef('');
+    const subcategory = useRef('');
+    const [image, setImage] = useState();
+    const [message, setMessage] = useState("");
+    const showMessage = (msg) => {
+        setMessage(msg);
+        setTimeout(() => {
+            setMessage("")
+        }, 3000);
+    }
+    const saveCategory = (e) => {
         // console.log(maincategory.current.value);
-        const categoryData=new FormData();
-        categoryData.append("mainCategory",maincategory.current.value);
-        categoryData.append("category",category.current.value);
-        categoryData.append("subCategory",subcategory.current.value);
-        categoryData.append("image",image);
+        const categoryData = new FormData();
+        categoryData.append("mainCategory", maincategory.current.value);
+        categoryData.append("category", category.current.value);
+        categoryData.append("subCategory", subcategory.current.value);
+        categoryData.append("image", image);
         // console.log(categoryData);
-        httpRequest(categoryData,'api/category/add');
+        httpRequest(categoryData, 'api/category/add').then((data) => showMessage(data.message));
     }
     return (
         <div className="content-div">
             <div className="card-header">
                 <div className="card-headding">Add Category
-                    {/* <p className="errorMessage">{alertMessage}</p> */}
+                    <p className="errorMessage">{message}</p>
                 </div>
             </div>
             <div className="table-container">
@@ -107,23 +110,23 @@ export const AddCategory = () => {
                     </div>
                     <div className="col">
                         <label htmlFor="category">Category</label>
-                        <input type="text"id="category" ref={category} className="form-control"  />
+                        <input type="text" id="category" ref={category} className="form-control" />
                     </div>
                 </div>
-                    <div className="row" style={{padding: "16px 37px" }}>
-                        <div className="col">
-                            <label htmlFor="sub_cat">Sub category</label>
-                            <input type="text" ref={subcategory} className="form-control" id="sub_cat" />
-                        </div>
-                        <div className="col">
-                            <label htmlFor="image">Image</label>
-                            <input type="file" onChange={(e)=>setImage(e.target.files[0])} className="form-control" id="image" />
-                        </div>
+                <div className="row" style={{ padding: "16px 37px" }}>
+                    <div className="col">
+                        <label htmlFor="sub_cat">Sub category</label>
+                        <input type="text" ref={subcategory} className="form-control" id="sub_cat" />
                     </div>
-                    
-            <div className="row"  style={{padding: "16px 37px" }}>
-                <button className="btn btn-primary" onClick={saveCategory}>Save</button>
-            </div>
+                    <div className="col">
+                        <label htmlFor="image">Image</label>
+                        <input type="file" onChange={(e) => setImage(e.target.files[0])} className="form-control" id="image" />
+                    </div>
+                </div>
+
+                <div className="row" style={{ padding: "16px 37px" }}>
+                    <button className="btn btn-primary" onClick={saveCategory}>Save</button>
+                </div>
             </div>
 
         </div>
