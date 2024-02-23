@@ -32,6 +32,7 @@ textarea{
     color: #5e5ee7;
     font-size: 19px;
     font-weight: 500;
+    text-transform: uppercase;
 }
 .errorMessage{
     color: red;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 const Navbar = () => {
     const menuData = [
@@ -39,10 +40,16 @@ const Navbar = () => {
             ],
         },
     ];
+    const[navbarShowOrHide,isToogleVisibility]=useState(false);
+    const navbarCallBack=(e)=>{
+        isToogleVisibility(!navbarShowOrHide);
+        console.log(navbarShowOrHide);
+    }
     return (
         <>
-            <Topnavbar />
-            <div className="content-container">
+            <Topnavbar  navbarShowOrHide={navbarShowOrHide} navbarCallBack={navbarCallBack}/>
+            
+            <div className={navbarShowOrHide?"content-container show":"hide"}>
                 <div className="side-nav-container" >
                     {menuData.map((menuItem, index) => (
                         <div className="menu-container" key={index}>
@@ -70,16 +77,23 @@ const Navbar = () => {
     );
 }
 export default Navbar;
-export const Topnavbar = () => {
+export const Topnavbar = ({navbarShowOrHide,navbarCallBack}) => {
+   
     return (
         <div className="topnav-container">
-            <img src="https://img.freepik.com/premium-vector/dog-paw-animal-paws_77417-1636.jpg?w=740" alt="logo" />
-            <div className="closingBtn">
+           
+            <div className="top-leftContainer">
+            <div className="logo">
+            <img src="https://img.freepik.com/premium-vector/dog-paw-animal-paws_77417-1636.jpg?w=740" alt="logo" style={{width:"40px"}}/>
+            </div>
+            <div className="closingBtn" onClick={navbarCallBack}>
                 <div className="bar"></div>
                 <div className="bar"></div>
                 <div className="bar"></div>
             </div>
+            </div>
             <div className="admin-name">
+            {navbarShowOrHide}
                 Admin
             </div>
         </div>

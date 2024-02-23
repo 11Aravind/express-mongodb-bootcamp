@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { httpgetdata } from "../API/api";
+import { Link } from "react-router-dom";
 import Table from "../components/Table"
 const Blogs = () => {
     const inlineStyle = {
@@ -51,6 +52,11 @@ const Blogs = () => {
              <div className="card-header">
                 <div className="card-headding">Blog
                     {/* <p className="errorMessage">{alertMessage}</p> */}
+                </div>
+                <div className="top-button">
+
+                    <Link to="/addblog"> <button className="btn-primary"> +Add</button></Link>
+
                 </div>
             </div>
             <div className="content-div" style={inlineStyle}>
