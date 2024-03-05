@@ -1,4 +1,21 @@
+import { useEffect, useState } from "react";
+import {httpgetdata} from "../API/api"
 const AddProduct=()=>{
+
+    const [categoryList,setCategoryList]=useState([]);
+    useEffect(()=>{
+        httpgetdata({},"api/category").then((data) => {
+            // Check if the fetched data is an object and has 'categoryDetails' array
+            if (data && Array.isArray(data.categoryDetails)) {
+                setCategoryList(data.categoryDetails);
+                console.log(categoryList);
+            } else {
+                console.error("Fetched data does not contain 'categoryDetails' array:", data);
+            }
+        }).catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }, []);
     return(
         <div className="content-div">
         <div className="card-header">
@@ -16,10 +33,11 @@ const AddProduct=()=>{
                     <label htmlFor="maincat">Category</label>
                     <select class="form-select" id="maincat" aria-label="Default select example">
                         <option selected>--Select--</option>
-                        <option value="Pet">Pet</option>
-                        <option value="Food">Food</option>
-                        <option value="Accessorys">Accessorys</option>
-                        <option value="Medicine">Medicine</option>
+                                      {
+                            categoryList.map((category,key)=>{
+                               return  <option value={category._id}>{category.mainCategory},{category.category},{category.subCategory}</option>
+                            })
+                        }
                     </select>
                 </div>
             </div>

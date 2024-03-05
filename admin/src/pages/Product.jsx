@@ -44,7 +44,7 @@ const Product=()=>{
     const tableCardHeadding=
         {
             tableHeadding:"Product Details",
-            buttonText:"Add Product",
+            buttonText:"Add",
             link:"/addproduct"
         };
     return(
