@@ -31,11 +31,11 @@ const AddProduct=()=>{
                 </div>
                 <div className="col">
                     <label htmlFor="maincat">Category</label>
-                    <select class="form-select" id="maincat" aria-label="Default select example">
+                    <select className="form-select" id="maincat" aria-label="Default select example">
                         <option selected>--Select--</option>
                                       {
-                            categoryList.map((category,key)=>{
-                               return  <option value={category._id}>{category.mainCategory},{category.category},{category.subCategory}</option>
+                            categoryList.map((category,index)=>{
+                               return  <option value={category._id} key={index}>{category.mainCategory},{category.category},{category.subCategory}</option>
                             })
                         }
                     </select>

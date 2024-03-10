@@ -23,11 +23,12 @@ export const saveCategory = async (req, res, next) => {
         category,
         subCategory,
         image
-    })
+    });
+
     try {
         await newCategory.save();
+        res.status(200).json({ message: "New category was added" });
     } catch (err) {
-        res.status(400).json({ message: "some thinking went wrong" })
+        res.status(400).json({ message: "Something went wrong" ,error:err});
     }
-    return res.status(200).json({ message: "New category was added" })
-}
+};

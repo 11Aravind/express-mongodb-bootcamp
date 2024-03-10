@@ -100,8 +100,8 @@ export const AddCategory = () => {
                 <div className="row " style={{ padding: "37px" }}>
                     <div className="col">
                         <label htmlFor="maincat">Main Category</label>
-                        <select class="form-select" id="maincat" ref={maincategory} aria-label="Default select example">
-                            <option selected>--Select--</option>
+                        <select className="form-select" id="maincat" ref={maincategory} aria-label="Default select example">
+                            <option defaultValue="Select" selected>--Select--</option>
                             <option value="Pet">Pet</option>
                             <option value="Food">Food</option>
                             <option value="Accessorys">Accessorys</option>

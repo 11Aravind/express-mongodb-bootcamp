@@ -13,7 +13,7 @@ export const getProductDetails=async(req,res,next)=>{
       return  res.status(404).json({productDetails})
        return  res.status(200).json({message:"Product was empty"})
       
-  );
+  )
 }
 export const saveProduct=async(req,res,next)=>{
 const {name,description,category,subCategory,image,oldPrice,newPrice,status}=req.body;

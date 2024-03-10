@@ -54,10 +54,11 @@ const Navbar = () => {
                     {menuData.map((menuItem, index) => (
                         <div className="menu-container" key={index}>
                             <div className="main-menu-headding">{menuItem.menu}</div>
+
                             {Array.isArray(menuItem.subMenu) ? (
                                 <>
                                     {menuItem.subMenu.map((subMenuItem, subIndex) => (
-                                        <Link to={subMenuItem.url}>
+                                        <Link to={subMenuItem.url} key={subIndex}>
                                             <div className="submenu" key={subIndex}>{subMenuItem.menu}</div>
 
                                         </Link>))}

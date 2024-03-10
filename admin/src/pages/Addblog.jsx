@@ -6,7 +6,7 @@ const Addblog = () => {
     const description = useRef("");
     const [file, setImage] = useState();
 
-    const upload = () => {
+    const addBlog = () => {
         const blogData = new FormData();
         blogData.append("tittle", tittle.current.value);
         blogData.append("description", description.current.value);
@@ -24,37 +24,12 @@ const Addblog = () => {
         <div className="content-div">
             <div className="card-header">
                 <div className="card-headding">Add Blog
-                
                 </div>
-
-                {/* <div className="top-button">
-                    <button className="btn-primary"> Go</button>
-                </div> */}
             </div>
-
-            {/* <div className="table-container">
-                <div className="row">
-                    <div className="form-controler">
-                        <label htmlFor="">Tittle</label>
-                        <input ref={tittle} type="text" id="" className="inputBox" />
-                    </div>
-                    <div className="form-controler">
-                        <label htmlFor="">Image</label>
-                        <input type="file" name="file" onChange={(e)=>setImage(e.target.files[0])} className="inputBox" />
-                    </div>
-                </div>
-                <div className="form-controler">
-                    <label htmlFor="description">Description</label>
-                    <textarea ref={description} type="text" id="description" rows="20"  ></textarea>
-                </div>
-                <div className="form-controler">
-                    <button className="add-blogBtn" onClick={upload}>SAVE</button>
-                </div>
-            </div> */}
             <div className="table-container">
                 <div className="row " style={{ padding: "37px" }}>
                     <div className="col">
-                        <label  htmlFor="Tittle" className="form-label">Tittle</label>
+                        <label htmlFor="Tittle" className="form-label">Tittle</label>
                         <input type="text" ref={tittle} className="form-control" id="Tittle" />
                     </div>
                     <div className="col">
@@ -65,7 +40,7 @@ const Addblog = () => {
                         <label htmlFor="exampleFormControlTextarea1" className="form-label">Description</label>
                         <textarea className="form-control" ref={description} id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button className="btn btn-primary">Save</button>
+                    <button className="btn btn-primary" onClick={addBlog}>Save</button>
                 </div>
             </div>
         </div>
