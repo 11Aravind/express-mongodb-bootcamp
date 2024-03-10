@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { httpRequest ,httpgetdata} from "../API/api";
+import { httpRequest } from "../API/api";
 import Table from "../components/Table";
 import { useEffect } from "react";
 const Gallery = () => {
-    // left: 0%;
-    // width: 100%;
-    // top: 111%;
-    
-    const [file, setFile] = useState("");
+      const [file, setFile] = useState("");
     const [alertMessage, setMessage] = useState("");
     const showMessage = (msg) => {
         setMessage(msg);
@@ -21,7 +17,7 @@ const Gallery = () => {
         else {
             const galleryData = new FormData();
             galleryData.append('image', file);
-            httpRequest(galleryData, "api/gallery/savegallery").then((res) => showMessage(res.message));
+            httpRequest('post',galleryData, "api/gallery/savegallery").then((res) => showMessage(res.message));
         }
     }
     return (
@@ -66,7 +62,7 @@ export const Gallerylist=()=>{
     ];
     const[galleryDetails,setGalleryDetails]=useState([]);
     useEffect(() => {
-        httpgetdata({}, "api/gallery").then((data) => {
+        httpRequest('get',{}, "api/gallery").then((data) => {
             // Check if the fetched data is an object and has 'categoryDetails' array
             if (data && Array.isArray(data.galleryList)) {
                 setGalleryDetails(data.galleryList);

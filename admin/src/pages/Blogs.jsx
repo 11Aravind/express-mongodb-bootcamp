@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { httpgetdata } from "../API/api";
+import { httpRequest } from "../API/api";
 import { Link } from "react-router-dom";
 import Table from "../components/Table"
 const Blogs = () => {
@@ -30,7 +30,7 @@ const Blogs = () => {
     ];
     const [blogDetails, setBlogDetails] = useState([]);
     useEffect(() => {
-        httpgetdata({}, "api/blog").then((data) => {
+        httpRequest('get',"api/blog").then((data) => {
             // Check if the fetched data is an object and has 'categoryDetails' array
             if (data && Array.isArray(data.blogDetails)) {
                 setBlogDetails(data.blogDetails);

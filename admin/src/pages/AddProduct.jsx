@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import {httpgetdata} from "../API/api"
+import {httpRequest} from "../API/api"
 const AddProduct=()=>{
 
     const [categoryList,setCategoryList]=useState([]);
     useEffect(()=>{
-        httpgetdata({},"api/category").then((data) => {
+        httpRequest('get',{},"api/category").then((data) => {
             // Check if the fetched data is an object and has 'categoryDetails' array
             if (data && Array.isArray(data.categoryDetails)) {
                 setCategoryList(data.categoryDetails);

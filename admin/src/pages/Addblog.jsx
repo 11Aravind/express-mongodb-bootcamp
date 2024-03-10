@@ -11,13 +11,10 @@ const Addblog = () => {
         blogData.append("tittle", tittle.current.value);
         blogData.append("description", description.current.value);
         blogData.append("image", file);
-        // axios.post("http://localhost:5000/api/blog/add",blogData)
-        // .then(res=>{})
-        // .catch((err)=>console.log(err))
-        // console.log(blogData);
         httpRequest(
+            'post',
+            "api/blog/add",
             blogData,
-            "api/blog/add"
         ).then((data) => console.log(data));
     }
     return (

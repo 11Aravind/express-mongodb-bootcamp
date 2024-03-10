@@ -1,18 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { httpRequest, httpgetdata } from "../API/api"
+import { httpRequest} from "../API/api"
 export const Categorydetails = () => {
-    const inlineStyle = {
-        left: "0%",
-        width: "100%",
-        top: "103%",
-    }
-    const tableHeadding = [
-        { th: "#id" }, { th: "Main category" }, { th: "Category" }, { th: "subCategory" }, { th: "image" }, { th: "Action" },
-    ];
+    const inlineStyle = { left: "0%", width: "100%", top: "103%", }
+    const tableHeadding = [{ th: "#id" }, { th: "Main category" }, { th: "Category" }, { th: "subCategory" }, { th: "image" }, { th: "Action" }, ];
     const [categoryDetails, setCategoryDetails] = useState([]);
+    const deleteCategory=(e)=>{
+    const category_id=e.target.id;
+    console.log(category_id);
+    }
     useEffect(() => {
-        httpgetdata({}, "api/category").then((data) => {
+        httpRequest('get',"api/category").then((data) => {
             // Check if the fetched data is an object and has 'categoryDetails' array
             if (data && Array.isArray(data.categoryDetails)) {
                 setCategoryDetails(data.categoryDetails);
@@ -23,6 +21,7 @@ export const Categorydetails = () => {
             console.error("Error fetching data:", error);
         });
     }, []);
+
     return (
         <div className="content-div">
             <div className="card-header">
@@ -55,7 +54,7 @@ export const Categorydetails = () => {
                                     <td>{eachValue.category}</td>
                                     <td>{eachValue.subCategory}</td>
                                     <td><img src={eachValue.image} alt="banner" className="bannerImg" /></td>
-                                    <td>  <i className="bi bi-trash3-fill"></i>  </td>
+                                    <td>  <i className="bi bi-trash3-fill" id={eachValue._id} onClick={deleteCategory}></i>  </td>
                                     {/* <td><i className="bi bi-pencil-square"></i> </td> */}
                                 </tr>
                             )
@@ -87,7 +86,7 @@ export const AddCategory = () => {
         categoryData.append("subCategory", subcategory.current.value);
         categoryData.append("image", image);
         // console.log(categoryData);
-        httpRequest(categoryData, 'api/category/add').then((data) => showMessage(data.message));
+        httpRequest('post',categoryData, 'api/category/add').then((data) => showMessage(data.message));
     }
     return (
         <div className="content-div">
