@@ -7,7 +7,13 @@ export const Categorydetails = () => {
     const [categoryDetails, setCategoryDetails] = useState([]);
     const deleteCategory=(e)=>{
     const category_id=e.target.id;
-    console.log(category_id);
+    const url=`api/category/${category_id}`;
+    console.log(url);
+    
+    httpRequest(
+        'delete',
+        url,
+    ).then((data) => console.log(data));
     }
     useEffect(() => {
         httpRequest('get',"api/category").then((data) => {
@@ -86,7 +92,7 @@ export const AddCategory = () => {
         categoryData.append("subCategory", subcategory.current.value);
         categoryData.append("image", image);
         // console.log(categoryData);
-        httpRequest('post',categoryData, 'api/category/add').then((data) => showMessage(data.message));
+        httpRequest('post', 'api/category/add',categoryData).then((data) => showMessage(data.message));
     }
     return (
         <div className="content-div">

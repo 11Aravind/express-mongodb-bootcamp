@@ -29,7 +29,7 @@ mongoose.connect('mongodb://localhost:27017/petsworlds', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
-  console.log(`Connected to MongoDB ${PORT}`);
+  console.log(`Connected to MongoDB in port  ${PORT}`);
   app.listen(PORT);
 }).catch((error) => {
   console.error('Error connecting to MongoDB:', error);

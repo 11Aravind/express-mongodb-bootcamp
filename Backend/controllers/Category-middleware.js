@@ -24,11 +24,24 @@ export const saveCategory = async (req, res, next) => {
         subCategory,
         image
     });
-
     try {
         await newCategory.save();
         res.status(200).json({ message: "New category was added" });
     } catch (err) {
         res.status(400).json({ message: "Something went wrong" ,error:err});
     }
+};
+export const deleteCategory=async(req,res)=>{
+const category_id=req.params.category_id;
+let deleteFlag;
+try{
+    deleteFlag=await Category.findByIdAndDelete(category_id);
+    if (!deletedProduct) {
+        return res.status(404).json({ message: 'Product not found' });
+    }
+   return  res.status(200).json({ message: 'Product deleted successfully', deletedProduct });
+}catch(err){
+  return  res.status(500).send({message:'deletion failed',err});
+}
+
 };
