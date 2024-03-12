@@ -13,7 +13,6 @@ const productSchema = new Schema({
     type: String,
     required: true
   },
-
   oldPrice: {
     type: Number,
     required: true

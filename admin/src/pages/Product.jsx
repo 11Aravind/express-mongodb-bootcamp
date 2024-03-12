@@ -10,20 +10,23 @@ const Product=()=>{
             th: "Name"
         },
         {
-            th: "Age"
+            th: "Image"
         },
         {
-            th: "Address"
+            th: "oldPrice"
+        },
+        {
+            th: "newPrice"
+        },
+        {
+            th: "Description"
         },
         {
             th: "Action"
         },
     ];
     const [productList,setProductList]=useState([]);
-    // useEffect(()=>{
-    //     httpRequest('get','api/product').then((data)=>setProductList(data));
-    // },[])
-    useEffect(() => {
+       useEffect(() => {
         httpRequest('get',"api/product").then((data) => {
             // Check if the fetched data is an object and has 'categoryDetails' array
             if (data && Array.isArray(data.productDetails)) {
@@ -35,30 +38,6 @@ const Product=()=>{
             console.error("Error fetching data:", error);
         });
     }, []);
-    // const tableValues = [
-    //     {
-    //         id: 10,
-    //         name: "Aravind",
-    //         age: 19,
-    //         address: "sreenandanam muthupilakkadu",
-    //         action: "btn-warning",
-    //     },
-    //     {
-    //         id: 11,
-    //         name: "Siva",
-    //         age: 19,
-    //         address: "Siva bhavan",
-    //         action: "btn-danger",
-    //     },
-    //     {
-    //         id: 11,
-    //         name: "Siva",
-    //         age: 19,
-    //         address: "Siva bhavan",
-    //         action: "btn-danger",
-    //     },
-    
-    // ];
     const tableCardHeadding=
         {
             tableHeadding:"Product Details",

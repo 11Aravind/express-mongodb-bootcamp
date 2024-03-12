@@ -17,7 +17,7 @@ app.use("/api/user",userRouter);
 app.use("/api/blog",blogRouter); 
 app.use("/api/gallery",galleryRouter); 
 app.use("/api/category",categoryRouter); 
-app.use("/api/product/",productRouter); 
+app.use("/api/product",productRouter); 
 app.use("/api/admin",adminRouter);
 mongoose.connect('mongodb://localhost:27017/petsworlds', {
   useNewUrlParser: true,

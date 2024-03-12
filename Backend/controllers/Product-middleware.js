@@ -1,34 +1,35 @@
 import mongoose from "mongoose";
 import Product from "../models/Product.js";
-export const getProductDetails=async(req,res,next)=>{
-    let productDetails;
-    try{
-     productDetails=Product.find();
-    }
-    catch(error){
+export const getProductDetails = async (req, res, next) => {
+  let productDetails;
+  try {
+    productDetails = await Product.find();
+  }
+  catch (error) {
     return console.log(error);
-    }
-      if(!productDetails)
-      return  res.status(404).json({productDetails})
-       return  res.status(200).json({message:"Product was empty"})
-      
+  }
+  if (productDetails.length===0)
+    return res.status(500).json({ message: "Product was empty" })
+  return res.status(200).json({ productDetails })
+
 }
-export const saveProduct=async(req,res,next)=>{
-const {name,description,category,subCategory,image,oldPrice,newPrice,status}=req.body;
-  const productData={
+export const saveProduct = async (req, res, next) => {
+  const { name, description, category_id, oldPrice, newPrice, status } = req.body;
+  const image = req.file.path;
+  const productData = new Product({
     name,
-    description,
-    category,
-    subCategory,
     image,
+    description,
     oldPrice,
     newPrice,
-    status
-  }
-  try{
-    productData.save();
-  }catch(error){
-  return console.log(error);
+    status,
+    category_id,
+  });
+  try {
+    await productData.save();
+    res.status(200).json({ status: "success", message: "product wass added successfuly" })
+  } catch (error) {
+    res.status(500).json({ status: "failed", message: `product was not inserted${error}` })
   }
 }
 

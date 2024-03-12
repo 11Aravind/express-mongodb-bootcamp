@@ -9,7 +9,6 @@ const Table = ({ tableCardHeadding, tableHeadding, tableValues ,inlineStyle}) =>
                 <div className="top-button">
                     {
                         tableCardHeadding.buttonText && <Link to={tableCardHeadding.link}> <button className="btn-primary"> +{tableCardHeadding.buttonText}</button></Link>
-
                     }     
                      </div>
             </div>
@@ -27,10 +26,12 @@ const Table = ({ tableCardHeadding, tableHeadding, tableValues ,inlineStyle}) =>
                     {
                         tableValues.map((eachValue, id) =>
                             <tr key={id} scope="row">
-                                <td>{eachValue.id}</td>
+                                <td>{eachValue._id}</td>
                                 <td>{eachValue.name}</td>
-                                <td>{eachValue.age}</td>
-                                <td>{eachValue.address}</td>
+                                <td> <img src={eachValue.image} alt="img" /> </td>
+                                <td>{eachValue.oldPrice}</td>
+                                <td>{eachValue.newPrice}</td>
+                                <td>{eachValue.description}</td>
                                 <td>  <i className="bi bi-trash3-fill"></i>  </td>
                                 {/* <td><i className="bi bi-pencil-square"></i> </td> */}
                             </tr>
