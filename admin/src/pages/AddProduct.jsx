@@ -4,7 +4,7 @@ const AddProduct=()=>{
 
     const [categoryList,setCategoryList]=useState([]);
     useEffect(()=>{
-        httpRequest('get',{},"api/category").then((data) => {
+        httpRequest('get',"api/category").then((data) => {
             // Check if the fetched data is an object and has 'categoryDetails' array
             if (data && Array.isArray(data.categoryDetails)) {
                 setCategoryList(data.categoryDetails);

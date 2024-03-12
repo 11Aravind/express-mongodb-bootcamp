@@ -17,7 +17,7 @@ const Gallery = () => {
         else {
             const galleryData = new FormData();
             galleryData.append('image', file);
-            httpRequest('post',galleryData, "api/gallery/savegallery").then((res) => showMessage(res.message));
+            httpRequest('post',"api/gallery/savegallery",galleryData).then((res) => showMessage(res.message));
         }
     }
     return (
@@ -62,7 +62,7 @@ export const Gallerylist=()=>{
     ];
     const[galleryDetails,setGalleryDetails]=useState([]);
     useEffect(() => {
-        httpRequest('get',{}, "api/gallery").then((data) => {
+        httpRequest('get',"api/gallery").then((data) => {
             // Check if the fetched data is an object and has 'categoryDetails' array
             if (data && Array.isArray(data.galleryList)) {
                 setGalleryDetails(data.galleryList);
